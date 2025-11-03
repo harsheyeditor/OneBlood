@@ -250,15 +250,14 @@ export const AnimatedInput: React.FC<AnimatedInputProps> = ({
           disabled={disabled || loading}
           required={required}
           value={getValue()}
-          onChange={onChange}
+          onChange={handleOnChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          onKeyDown={handleKeyPress}
+          onKeyDown={handleKeyDown}
           style={{
             background: 'transparent',
             color: theme.colors.text,
             border: `1px solid ${theme.colors.border}`,
-            color: theme.colors.text,
             borderRadius: '12px',
             padding: '16px',
             fontSize: '16px',
