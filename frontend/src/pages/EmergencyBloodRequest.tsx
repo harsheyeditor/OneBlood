@@ -9,6 +9,7 @@ import { LoadingSpinner } from '../components/LoadingSpinner';
 import { SuccessAnimation } from '../components/SuccessAnimation';
 import { BloodDrop3D } from '../components/BloodDrop3D';
 import { HeartPulseAnimation, BloodBagFillingAnimation } from '../components/HeartPulseAnimation';
+import { AnimatedInput, AnimatedTextInput, AnimatedTextArea, AnimatedButton } from '../components/AnimatedInput';
 import { useTranslation } from 'react-i18next';
 import './EmergencyBloodRequest.css';
 
