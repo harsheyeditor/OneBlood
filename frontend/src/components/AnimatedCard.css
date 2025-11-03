@@ -1,0 +1,193 @@
+.floating-card-3d {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.floating-card-3d.dark {
+  background: rgba(26, 26, 46, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.floating-3d-canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.floating-card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  z-index: 5;
+}
+
+.floating-card-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+}
+
+.floating-card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spinner-3d {
+  width: 40px;
+  height: 40px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: currentColor;
+  border-left-color: transparent;
+  border-radius: 50%;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Card size variants */
+.floating-card-3d.small {
+  width: 200px;
+  height: 120px;
+}
+
+.floating-card-3d.medium {
+  width: 300px;
+  height: 180px;
+}
+
+.floating-card-3d.large {
+  width: 400px;
+  height: 240px;
+}
+
+.floating-card-3d.xlarge {
+  width: 500px;
+  height: 300px;
+}
+
+/* Enhanced shadow effects */
+.shadow-depth {
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    0 10px 20px rgba(0, 0, 0, 0.1),
+    0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.floating-card-3d.shadow-depth {
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.3),
+    0 15px 30px rgba(0, 0, 0, 0.15),
+    0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effects */
+.floating-card-3d:hover {
+  transform: translateY(-5px);
+}
+
+.floating-3d.floating-card-3d:hover {
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.25),
+    0 12px 25px rgba(0, 0, 0, 0.12);
+    0 6px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Dark theme adjustments */
+.floating-3d.dark {
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 10px 20px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.floating-3d.dark:hover {
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.35),
+    0 12px 25px rgba(0, 0, 0, 0.2),
+    0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .floating-3d.light {
+    border: 2px solid #000;
+  }
+
+  .floating-3d.dark {
+    border: 2px solid #fff;
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .floating-3d {
+    width: 280px;
+    height: 180px;
+  }
+
+  .floating-3d.medium {
+    width: 260px;
+    height: 160px;
+  }
+
+  .floating-3d.large {
+    width: 360px;
+    height: 220px;
+  }
+
+  .floating-3d.xlarge {
+    width: 460px;
+    height: 280px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .floating-3d * {
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+
+  .floating-3d:hover {
+    transform: none;
+  }
+
+  .floating-3d-loading {
+    display: none;
+  }
+
+  .floating-3d-glow {
+    display: none;
+  }
+}
