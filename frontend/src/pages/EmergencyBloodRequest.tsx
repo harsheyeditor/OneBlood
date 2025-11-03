@@ -373,12 +373,12 @@ const EmergencyBloodRequest: React.FC = () => {
                   </div>
 
                   <div className="form-group full-width">
-                    <label>{t('patient_condition')} ({t('optional')})</label>
-                    <textarea
-                      value={formData.patientCondition}
-                      onChange={(e) => handleInputChange('patientCondition', e.target.value)}
+                    <AnimatedTextArea
                       placeholder={t('describe_condition')}
+                      value={formData.patientCondition}
+                      onChange={(value) => handleInputChange('patientCondition', value)}
                       rows={3}
+                      style={{ minHeight: '120px' }}
                     />
                   </div>
                 </div>
