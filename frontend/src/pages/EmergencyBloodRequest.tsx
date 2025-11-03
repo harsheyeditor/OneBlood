@@ -312,33 +312,25 @@ const EmergencyBloodRequest: React.FC = () => {
                 <h2>{t('confirm_details')}</h2>
 
                 <div className="form-grid">
-                  <div className="form-group">
-                    <label>{t('your_name')}</label>
-                    <input
-                      type="text"
-                      value={formData.requesterName}
-                      onChange={(e) => handleInputChange('requesterName', e.target.value)}
-                      placeholder={t('enter_name')}
-                      className={errors.requesterName ? 'error' : ''}
-                    />
-                    {errors.requesterName && (
-                      <span className="error-message">{errors.requesterName}</span>
-                    )}
-                  </div>
+                  <AnimatedTextInput
+                    label={t('your_name')}
+                    value={formData.requesterName}
+                    onChange={(value) => handleInputChange('requesterName', value)}
+                    placeholder={t('enter_name')}
+                    error={errors.requesterName}
+                    variant="glass"
+                    size="large"
+                  />
 
-                  <div className="form-group">
-                    <label>{t('phone_number')}</label>
-                    <input
-                      type="tel"
-                      value={formData.requesterPhone}
-                      onChange={(e) => handleInputChange('requesterPhone', e.target.value)}
-                      placeholder="+91XXXXXXXXXX"
-                      className={errors.requesterPhone ? 'error' : ''}
-                    />
-                    {errors.requesterPhone && (
-                      <span className="error-message">{errors.requesterPhone}</span>
-                    )}
-                  </div>
+                  <AnimatedTextInput
+                    label={t('phone_number')}
+                    value={formData.requesterPhone}
+                    onChange={(value) => handleInputChange('requesterPhone', value)}
+                    placeholder="+91XXXXXXXXXX"
+                    error={errors.requesterPhone}
+                    variant="glass"
+                    size="large"
+                  />
 
                   <div className="form-group">
                     <label>{t('blood_type')}</label>
