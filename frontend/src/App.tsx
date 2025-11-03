@@ -24,6 +24,7 @@ function App() {
               <Route path="/donor-register" element={<DonorRegistration />} />
               <Route path="/hospital-dashboard" element={<HospitalDashboard />} />
               <Route path="/donor-dashboard" element={<DonorDashboard />} />
+              <Route path="/animations" element={<AnimationShowcase />} />
               <Route path="*" element={<EmergencyBloodRequest />} />
             </Routes>
           </Suspense>
