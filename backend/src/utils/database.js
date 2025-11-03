@@ -33,6 +33,12 @@ const connectDB = async () => {
     return conn;
   } catch (error) {
     console.error('Error connecting to MongoDB:', error.message);
+    console.log('Running in development mode without database connection');
+    // In development mode, continue without database for testing
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Development mode: Continuing without MongoDB');
+      return null;
+    }
     process.exit(1);
   }
 };
