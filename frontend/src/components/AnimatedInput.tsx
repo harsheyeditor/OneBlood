@@ -42,7 +42,7 @@ interface Input3DCoreProps {
 }
 
 // 3D input core component
-const Input3DCore: React.FC<Input3DProps> = ({
+const Input3DCore: React.FC<Input3DCoreProps> = ({
   onClick,
   isHovered,
   isFocused,
@@ -50,7 +50,7 @@ const Input3DCore: React.FC<Input3DProps> = ({
   variant,
   themeColors,
   size,
-  theme,
+  icon,
   error
 }) => {
   const meshRef = useRef<any>(null);
