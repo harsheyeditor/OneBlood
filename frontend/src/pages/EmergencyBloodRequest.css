@@ -346,6 +346,26 @@
   max-width: 400px;
 }
 
+.success-animations {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  height: 200px;
+}
+
+.heart-animation-wrapper {
+  position: relative;
+  z-index: 5;
+}
+
+.blood-bag-animation-wrapper {
+  position: relative;
+  z-index: 5;
+}
+
 .success-content h2 {
   font-size: 2rem;
   color: #4caf50;
