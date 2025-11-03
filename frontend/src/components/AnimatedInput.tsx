@@ -398,11 +398,10 @@ export const AnimatedNumberInput: React.FC<{
       <AnimatedInput
         type="number"
         value={value}
-        onChange={onChange}
+        onChange={onChange ? (e) => onChange(e.target.value) : undefined}
         min={min}
         max={max}
         disabled={disabled}
-        className={`animated-number-input ${theme.isDark ? 'dark' : 'light'}`}
         className={className}
       />
     </div>
