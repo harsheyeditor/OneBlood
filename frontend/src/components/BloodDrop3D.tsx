@@ -171,7 +171,10 @@ export const BloodDrop3D: React.FC<BloodDrop3DProps> = ({
       {/* Enhanced glow effects */}
       <GlowEffects isAnimating={isAnimating} clicked={clicked} />
 
-      {/* Particle burst effects */}
+      {/* Advanced particle system */}
+      {isAnimating && <ParticleSystem isAnimating={true} particleCount={30} />}
+
+      {/* Enhanced particle burst effects */}
       {isAnimating && <ParticleBurst />}
       {clicked && <ClickBurst />}
     </group>
