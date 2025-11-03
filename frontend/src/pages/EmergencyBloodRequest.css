@@ -1,0 +1,520 @@
+.emergency-blood-request {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.language-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.language-toggle:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.canvas-container {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+/* Emergency Button Styles */
+.emergency-button-container {
+  text-align: center;
+  cursor: pointer;
+}
+
+.emergency-text {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+}
+
+.emergency-text h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #d32f2f;
+  margin: 0 0 10px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: pulse 2s infinite;
+}
+
+.emergency-text p {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Location Container */
+.location-container {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.location-content h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin: 20px 0;
+}
+
+.location-success {
+  background: rgba(76, 175, 80, 0.1);
+  border: 2px solid #4caf50;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.location-success p {
+  color: #2e7d32;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+}
+
+.location-success small {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.location-error {
+  background: rgba(244, 67, 54, 0.1);
+  border: 2px solid #f44336;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.location-error p {
+  color: #c62828;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+}
+
+.retry-button {
+  padding: 12px 24px;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+  background: #d32f2f;
+  transform: translateY(-2px);
+}
+
+/* Form Styles */
+.confirm-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.confirm-form {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-form h2 {
+  text-align: center;
+  color: #333;
+  margin: 0 0 30px 0;
+  font-size: 1.8rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #d32f2f;
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #f44336;
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* Blood Type Selector */
+.blood-type-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.blood-type-btn {
+  padding: 12px 8px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  background: white;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #333;
+}
+
+.blood-type-btn:hover {
+  border-color: #d32f2f;
+  transform: translateY(-2px);
+}
+
+.blood-type-btn.active {
+  background: #d32f2f;
+  color: white;
+  border-color: #d32f2f;
+}
+
+/* Urgency Selector */
+.urgency-selector {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.urgency-btn {
+  padding: 10px 16px;
+  border: 2px solid;
+  border-radius: 20px;
+  background: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 120px;
+}
+
+.urgency-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.urgency-btn.active {
+  color: white;
+  font-weight: 700;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.back-button,
+.continue-button,
+.submit-button,
+.new-request-button {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.back-button {
+  background: #e0e0e0;
+  color: #666;
+}
+
+.back-button:hover {
+  background: #d0d0d0;
+  transform: translateY(-2px);
+}
+
+.continue-button,
+.submit-button {
+  background: #d32f2f;
+  color: white;
+}
+
+.continue-button:hover,
+.submit-button:hover {
+  background: #b71c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.3);
+}
+
+/* Submit Error */
+.submit-error {
+  background: rgba(244, 67, 54, 0.1);
+  border: 2px solid #f44336;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px 0;
+  text-align: center;
+  color: #c62828;
+  font-weight: 600;
+}
+
+/* Submitting Container */
+.submitting-container {
+  text-align: center;
+}
+
+.submitting-content h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin: 20px 0;
+}
+
+.submitting-content p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Success Container */
+.success-container {
+  text-align: center;
+  max-width: 400px;
+}
+
+.success-animations {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  height: 200px;
+}
+
+.heart-animation-wrapper {
+  position: relative;
+  z-index: 5;
+}
+
+.blood-bag-animation-wrapper {
+  position: relative;
+  z-index: 5;
+}
+
+.success-content h2 {
+  font-size: 2rem;
+  color: #4caf50;
+  margin: 20px 0;
+}
+
+.success-content p {
+  color: #555;
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+.request-details {
+  background: rgba(76, 175, 80, 0.1);
+  border: 2px solid #4caf50;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.request-details p {
+  margin: 5px 0;
+  font-weight: 500;
+}
+
+.new-request-button {
+  background: #4caf50;
+  color: white;
+  margin-top: 20px;
+}
+
+.new-request-button:hover {
+  background: #388e3c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+}
+
+/* Location Actions */
+.location-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* Emergency Instructions */
+.emergency-instructions {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 25px;
+  margin-top: 30px;
+  max-width: 600px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.emergency-instructions h3 {
+  color: #d32f2f;
+  margin: 0 0 15px 0;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.emergency-instructions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.emergency-instructions li {
+  padding: 8px 0;
+  color: #555;
+  position: relative;
+  padding-left: 25px;
+}
+
+.emergency-instructions li:before {
+  content: "•";
+  color: #d32f2f;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .emergency-blood-request {
+    padding: 15px;
+  }
+
+  .canvas-container {
+    height: 300px;
+  }
+
+  .emergency-text h1 {
+    font-size: 2rem;
+  }
+
+  .emergency-text p {
+    font-size: 1rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .blood-type-selector {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .urgency-selector {
+    flex-direction: column;
+  }
+
+  .urgency-btn {
+    min-width: auto;
+  }
+
+  .form-actions,
+  .location-actions {
+    flex-direction: column;
+  }
+
+  .language-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .canvas-container {
+    height: 250px;
+  }
+
+  .confirm-form {
+    padding: 20px;
+  }
+
+  .emergency-instructions {
+    padding: 20px;
+  }
+}
