@@ -345,6 +345,8 @@ export const AnimatedTextInput: React.FC<{
   icon,
   className = ''
 }) => {
+  const { theme } = useTheme();
+
   return (
     <div className={`animated-text-input ${theme.isDark ? 'dark' : 'light'} ${className}`}>
       <label className="animated-text-label">
@@ -353,7 +355,7 @@ export const AnimatedTextInput: React.FC<{
 
       <AnimatedInput
         value={value}
-        onChange={onChange}
+        onChange={onChange ? (e) => onChange(e.target.value) : undefined}
         placeholder={placeholder}
         variant={variant}
         size={size}
