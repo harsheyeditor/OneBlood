@@ -270,26 +270,22 @@ const EmergencyBloodRequest: React.FC = () => {
                     )}
 
                     <div className="location-actions">
-                      <motion.button
-                        className="back-button"
+                      <AnimatedButton
+                        variant="secondary"
                         onClick={() => setStep('form')}
-                        variants={buttonVariants}
-                        whileHover="hover"
-                        whileTap="tap"
+                        size="medium"
                       >
                         {t('back')}
-                      </motion.button>
+                      </AnimatedButton>
 
                       {formData.location && (
-                        <motion.button
-                          className="continue-button"
+                        <AnimatedButton
+                          variant="primary"
                           onClick={() => setStep('confirm')}
-                          variants={buttonVariants}
-                          whileHover="hover"
-                          whileTap="tap"
+                          size="medium"
                         >
                           {t('continue')}
-                        </motion.button>
+                        </AnimatedButton>
                       )}
                     </div>
                   </>
