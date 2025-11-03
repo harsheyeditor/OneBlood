@@ -1,0 +1,59 @@
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.animated-background canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Theme-specific styling */
+.animated-background.light {
+  background: linear-gradient(135deg, #ffebee 0%, #fff8e1 50%, #e8f5e8 100%);
+}
+
+.animated-background.dark {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+/* Performance optimizations */
+@media (max-width: 768px) {
+  .animated-background {
+    opacity: 0.7;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animated-background {
+    opacity: 0.5;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .animated-background.light {
+    background: #ffffff;
+  }
+
+  .animated-background.dark {
+    background: #000000;
+  }
+}
