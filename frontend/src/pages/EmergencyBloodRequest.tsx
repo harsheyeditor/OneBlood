@@ -257,15 +257,13 @@ const EmergencyBloodRequest: React.FC = () => {
                     ) : (
                       <div className="location-error">
                         <p>{locationError}</p>
-                        <motion.button
-                          className="retry-button"
+                        <AnimatedButton
+                          variant="warning"
                           onClick={getCurrentLocation}
-                          variants={buttonVariants}
-                          whileHover="hover"
-                          whileTap="tap"
+                          size="medium"
                         >
                           {t('retry')}
-                        </motion.button>
+                        </AnimatedButton>
                       </div>
                     )}
 
