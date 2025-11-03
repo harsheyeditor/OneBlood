@@ -5,7 +5,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import { LoadingSpinner } from './LoadingSpinner';
 import './AnimatedInput.css';
 
-interface AnimatedInputProps extends React.InputHTMLAttributes {
+interface AnimatedInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   children?: React.ReactNode;
   className?: string;
   placeholder?: string;
@@ -20,12 +20,12 @@ interface AnimatedInputProps extends React.InputHTMLAttributes {
   size?: 'small' | 'medium' | 'large';
   loading?: boolean;
   icon?: React.ReactNode;
-  disabled ? 'disabled' : 'default';
   value?: string;
   defaultValue?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: () => void;
   onBlur?: () => void;
+  onEnter?: () => void;
   ref?: React.Ref<HTMLInputElement>;
 }
 
