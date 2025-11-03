@@ -225,7 +225,7 @@ export const AnimatedInput: React.FC<AnimatedInputProps> = ({
   };
 
   return (
-    <div className={`animated-input ${theme.isDark ? 'dark' : 'light'} ${className} ${className} ${getVariantClasses(variant)} ${getSizeClasses(size)} ${error ? 'error' : ''}`}>
+    <div className={`animated-input ${theme.isDark ? 'dark' : 'light'} ${className} ${getVariantClasses(variant)} ${getSizeClasses(size)} ${error ? 'error' : ''}`}>
       <div className="input-3d-container">
         {/* 3D Input with animations */}
         <Input3DCore
