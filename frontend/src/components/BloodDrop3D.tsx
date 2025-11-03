@@ -294,64 +294,215 @@ const GlowEffects: React.FC<{
   );
 };
 
-// Particle burst effect
-const ParticleBurst: React.FC = () => {
-  const particlesRef = useRef<Mesh>(null);
+// Advanced particle system with physics
+const ParticleSystem: React.FC<{
+  isAnimating: boolean;
+  particleCount?: number;
+}> = ({ isAnimating, particleCount = 20 }) => {
+  const particlesRef = useRef<any[]>([]);
+  const [particles] = useState(() =>
+    Array.from({ length: particleCount }, (_, i) => ({
+      id: i,
+      position: [
+        (Math.random() - 0.5) * 8,
+        (Math.random() - 0.5) * 8,
+        (Math.random() - 0.5) * 8
+      ] as [number, number, number],
+      velocity: [
+        (Math.random() - 0.5) * 0.05,
+        Math.random() * 0.02 + 0.01,
+        (Math.random() - 0.5) * 0.05
+      ] as [number, number, number],
+      size: Math.random() * 0.1 + 0.05,
+      color: Math.random() > 0.5 ? '#ff6b9d' : '#ff9999',
+      life: Math.random() * 3 + 2,
+      maxLife: Math.random() * 3 + 2
+    }))
+  );
 
-  useFrame((state) => {
-    if (!particlesRef.current) return;
+  useFrame((state, delta) => {
+    if (!isAnimating) return;
 
     const time = state.clock.elapsedTime;
 
-    // Complex rotation pattern
-    particlesRef.current.rotation.x = time * 0.5;
-    particlesRef.current.rotation.y = time * 0.8;
-    particlesRef.current.rotation.z = time * 0.3;
+    particles.forEach((particle, index) => {
+      // Update position with physics
+      particle.position[0] += particle.velocity[0];
+      particle.position[1] += particle.velocity[1];
+      particle.position[2] += particle.velocity[2];
 
-    // Pulsing scale
-    const scale = 1 + Math.sin(time * 4) * 0.2;
-    particlesRef.current.scale.setScalar(3 * scale);
+      // Apply gravity
+      particle.velocity[1] -= 0.001;
+
+      // Add some turbulence
+      particle.velocity[0] += Math.sin(time + index) * 0.001;
+      particle.velocity[2] += Math.cos(time + index) * 0.001;
+
+      // Update life
+      particle.life -= delta;
+
+      // Reset particle when it dies
+      if (particle.life <= 0) {
+        particle.position = [
+          (Math.random() - 0.5) * 2,
+          -2,
+          (Math.random() - 0.5) * 2
+        ];
+        particle.velocity = [
+          (Math.random() - 0.5) * 0.05,
+          Math.random() * 0.02 + 0.01,
+          (Math.random() - 0.5) * 0.05
+        ];
+        particle.life = particle.maxLife;
+      }
+    });
   });
 
   return (
-    <mesh ref={particlesRef} position={[0, 0, 0]}>
-      <octahedronGeometry args={[1, 0]} />
-      <meshBasicMaterial
-        color="#ff9999"
-        wireframe
-        transparent
-        opacity={0.2}
-      />
-    </mesh>
+    <>
+      {particles.map((particle) => (
+        <mesh
+          key={particle.id}
+          position={particle.position}
+          scale={particle.size * (particle.life / particle.maxLife)}
+        >
+          <sphereGeometry args={[1, 8, 8]} />
+          <meshBasicMaterial
+            color={particle.color}
+            transparent
+            opacity={particle.life / particle.maxLife * 0.6}
+          />
+        </mesh>
+      ))}
+    </>
   );
 };
 
-// Click burst effect
+// Enhanced particle burst with physics
+const ParticleBurst: React.FC = () => {
+  const burstParticlesRef = useRef<any[]>([]);
+  const [burstParticles] = useState(() =>
+    Array.from({ length: 12 }, (_, i) => ({
+      id: i,
+      angle: (i * Math.PI * 2) / 12,
+      speed: Math.random() * 0.5 + 0.5,
+      offset: Math.random() * Math.PI * 0.2,
+      size: Math.random() * 0.3 + 0.1
+    }))
+  );
+
+  useFrame((state) => {
+    const time = state.clock.elapsedTime;
+
+    burstParticles.forEach((particle) => {
+      const radius = particle.speed * time;
+      const wobble = Math.sin(time * 5 + particle.offset) * 0.2;
+
+      particle.x = Math.cos(particle.angle + wobble) * radius;
+      particle.y = Math.sin(particle.angle + wobble) * radius;
+      particle.opacity = Math.max(0, 1 - radius / 5);
+    });
+  });
+
+  return (
+    <>
+      {burstParticles.map((particle) => (
+        <mesh
+          key={particle.id}
+          position={[particle.x || 0, particle.y || 0, 0]}
+          scale={particle.size}
+        >
+          <sphereGeometry args={[1, 8, 8]} />
+          <meshBasicMaterial
+            color="#ff9999"
+            transparent
+            opacity={particle.opacity || 0.5}
+          />
+        </mesh>
+      ))}
+    </>
+  );
+};
+
+// Spectacular click burst with multiple layers
 const ClickBurst: React.FC = () => {
-  const burstRef = useRef<Mesh>(null);
+  const burstRef = useRef<any>(null);
+  const [rings] = useState(() =>
+    Array.from({ length: 5 }, (_, i) => ({
+      id: i,
+      delay: i * 0.1,
+      maxScale: 1 + i * 0.5,
+      color: ['#ff6b6b', '#ff9999', '#ffcccc', '#ffdddd', '#ffeeee'][i]
+    }))
+  );
 
   useFrame((state, delta) => {
     if (!burstRef.current) return;
 
-    // Rapid expansion
-    burstRef.current.scale.multiplyScalar(1.05);
+    const time = state.clock.elapsedTime;
+
+    // Main ring expansion
+    const mainScale = 1 + time * 3;
+    if (mainScale < 10) {
+      burstRef.current.scale.setScalar(mainScale);
+    }
 
     // Fade out
     if (burstRef.current.material && 'opacity' in burstRef.current.material) {
-      (burstRef.current.material as any).opacity -= delta * 2;
+      const opacity = Math.max(0, 1 - time * 2);
+      (burstRef.current.material as any).opacity = opacity;
     }
   });
 
   return (
-    <mesh ref={burstRef} position={[0, 0, 0]}>
-      <ringGeometry args={[1, 2, 32]} />
-      <meshBasicMaterial
-        color="#ff6b6b"
-        transparent
-        opacity={1}
-        side={2}
-      />
-    </mesh>
+    <>
+      {/* Main burst ring */}
+      <mesh ref={burstRef} position={[0, 0, 0]}>
+        <ringGeometry args={[1, 2, 64]} />
+        <meshBasicMaterial
+          color="#ff6b6b"
+          transparent
+          opacity={1}
+          side={2}
+        />
+      </mesh>
+
+      {/* Secondary rings */}
+      {rings.map((ring) => (
+        <mesh
+          key={ring.id}
+          position={[0, 0, 0]}
+          scale={0}
+        >
+          <ringGeometry args={[1, 2, 32]} />
+          <meshBasicMaterial
+            color={ring.color}
+            transparent
+            opacity={0.6}
+            side={2}
+          />
+        </mesh>
+      ))}
+
+      {/* Explosion particles */}
+      {Array.from({ length: 20 }, (_, i) => (
+        <mesh
+          key={`explosion-${i}`}
+          position={[
+            (Math.random() - 0.5) * 4,
+            (Math.random() - 0.5) * 4,
+            (Math.random() - 0.5) * 2
+          ]}
+        >
+          <sphereGeometry args={[0.1, 4, 4]} />
+          <meshBasicMaterial
+            color="#ff9999"
+            emissive="#ff6666"
+            emissiveIntensity={0.5}
+          />
+        </mesh>
+      ))}
+    </>
   );
 };
 
