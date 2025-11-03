@@ -1,0 +1,389 @@
+/* Animated Input Component Styles */
+.animated-input {
+  position: relative;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.input-3d-container {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.input-3d-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: transparent;
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.input-3d-text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-3d-icon {
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.input-3d-text {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.input-3d-placeholder {
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.input-3d-loading {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+.input-3d-error {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  color: #f44336;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.input-3d-error-message {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Input Variants */
+.input-3d-default {
+  /* Default styles handled by theme */
+}
+
+.input-3d-floating {
+  border-radius: 25px;
+}
+
+.input-3d-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.input-3d-outline {
+  background: transparent;
+  border: 2px solid var(--border-color);
+}
+
+/* Input Sizes */
+.input-3d-small {
+  height: 40px;
+  font-size: 14px;
+}
+
+.input-3d-medium {
+  height: 60px;
+  font-size: 16px;
+}
+
+.input-3d-large {
+  height: 80px;
+  font-size: 18px;
+}
+
+.input-3d-xlarge {
+  height: 100px;
+  font-size: 20px;
+}
+
+/* Error State */
+.animated-input.error .input-3d-content {
+  border-color: #f44336;
+  box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2);
+}
+
+.animated-input.error .input-3d-text {
+  color: #f44336;
+}
+
+/* Focus State */
+.animated-input:focus-within .input-3d-content {
+  box-shadow: 0 0 0 2px var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.animated-input:focus-within .input-3d-text {
+  color: var(--primary-color);
+}
+
+/* Hover State */
+.animated-input:hover .input-3d-content {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+/* Disabled State */
+.animated-input:has(.input-3d-content:disabled) {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.animated-input:has(.input-3d-content:disabled) .input-3d-content {
+  cursor: not-allowed;
+}
+
+/* Loading State */
+.animated-input:has(.input-3d-loading) .input-3d-content {
+  padding-right: 50px;
+}
+
+/* Theme Variations */
+.animated-input.light {
+  color-scheme: light;
+}
+
+.animated-input.dark {
+  color-scheme: dark;
+}
+
+.animated-input.dark .input-3d-glass {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Text Input Component Styles */
+.animated-text-input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.animated-text-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Number Input Component Styles */
+.animated-number-input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.animated-number-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Textarea Component Styles */
+.animated-textarea {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.animated-textarea textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+/* Button 3D Component Styles */
+.button-3d {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+  user-select: none;
+  overflow: hidden;
+}
+
+.button-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.button-3d:hover::before {
+  transform: translateX(100%);
+}
+
+.button-3d:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.button-3d:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button-3d:disabled::before {
+  display: none;
+}
+
+/* Button Variants */
+.button-3d.primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  box-shadow: 0 4px 15px var(--primary-color);
+}
+
+.button-3d.secondary {
+  background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
+  color: white;
+  box-shadow: 0 4px 15px var(--secondary-color);
+}
+
+.button-3d.danger {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  color: white;
+  box-shadow: 0 4px 15px #f44336;
+}
+
+.button-3d.success {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+  color: white;
+  box-shadow: 0 4px 15px #4caf50;
+}
+
+.button-3d.warning {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
+  box-shadow: 0 4px 15px #ff9800;
+}
+
+.button-3d.outline {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Sizes */
+.button-3d.small {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.button-3d.medium {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.button-3d.large {
+  padding: 16px 32px;
+  font-size: 18px;
+  border-radius: 16px;
+}
+
+/* 3D Transform Effects */
+.button-3d {
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+}
+
+.button-3d:hover {
+  transform: perspective(1000px) rotateX(-5deg) rotateY(5deg) translateY(-2px);
+}
+
+.button-3d:active {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateY(1px);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .animated-input,
+  .input-3d-container,
+  .input-3d-content,
+  .button-3d {
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+
+  .button-3d::before {
+    display: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .input-3d-content {
+    border-width: 2px;
+  }
+
+  .button-3d {
+    border-width: 2px;
+  }
+
+  .button-3d.outline {
+    border-width: 3px;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .input-3d-container {
+    height: 50px;
+  }
+
+  .input-3d-text-overlay {
+    left: 15px;
+  }
+
+  .button-3d {
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+
+  .animated-text-input,
+  .animated-number-input,
+  .animated-textarea {
+    margin-bottom: 15px;
+  }
+}
