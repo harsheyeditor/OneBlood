@@ -456,8 +456,8 @@ const EmergencyBloodRequest: React.FC = () => {
                   <p><strong>{t('estimated_response')}:</strong> 15-30 {t('minutes')}</p>
                 </div>
 
-                <motion.button
-                  className="new-request-button"
+                <AnimatedButton
+                  variant="success"
                   onClick={() => {
                     setStep('form');
                     setFormData({
@@ -470,12 +470,10 @@ const EmergencyBloodRequest: React.FC = () => {
                     });
                     setErrors({});
                   }}
-                  variants={buttonVariants}
-                  whileHover="hover"
-                  whileTap="tap"
+                  size="large"
                 >
                   {t('new_request')}
-                </motion.button>
+                </AnimatedButton>
               </div>
             </motion.div>
           )}
