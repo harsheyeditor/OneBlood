@@ -171,12 +171,18 @@ export const AnimatedInput: React.FC<AnimatedInputProps> = ({
   const handleFocus = () => {
     setIsFocused(true);
     inputRef.current?.focus();
+    if (onFocus) {
+      onFocus();
+    }
   };
 
   const handleBlur = () => {
     setIsFocused(false);
     setIsHovered(false);
     setIsPressed(false);
+    if (onBlur) {
+      onBlur();
+    }
   };
 
   const handleMouseDown = () => {
@@ -196,7 +202,7 @@ export const AnimatedInput: React.FC<AnimatedInputProps> = ({
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      onEnter();
+      onEnter?.();
     }
   };
 
