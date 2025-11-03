@@ -433,20 +433,19 @@ export const AnimatedTextArea: React.FC<{
       <textarea
         placeholder={placeholder}
         value={value}
-        onChange={onChange}
+        onChange={onChange ? (e) => onChange(e.target.value) : undefined}
         rows={rows}
         cols={cols}
         disabled={disabled}
-        className={`animated-textarea ${theme.isDark ? 'dark' : 'light'} ${className}`}
+        className={className}
         style={{
-          background: theme.isDark ? '#1e1e1e1' : '#f8f9fa',
+          background: theme.isDark ? '#1e1e1e' : '#f8f9fa',
           color: theme.colors.text,
           border: `1px solid ${theme.colors.border}`,
-          color: theme.colors.text,
           borderRadius: '12px',
           padding: '16px',
           fontSize: '16px',
-          fontFamily: 'Segoe UI', sans-serif',
+          fontFamily: 'Segoe UI, sans-serif',
           backdropFilter: 'blur(20px)',
           transition: 'all 0.3s ease',
           transform: 'translateZ(0)',
@@ -456,7 +455,6 @@ export const AnimatedTextArea: React.FC<{
         }}
       />
     </div>
-  </div>
   );
 };
 
