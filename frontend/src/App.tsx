@@ -10,6 +10,7 @@ const EmergencyBloodRequest = React.lazy(() => import('./pages/EmergencyBloodReq
 const DonorRegistration = React.lazy(() => import('./pages/DonorRegistration'));
 const HospitalDashboard = React.lazy(() => import('./pages/HospitalDashboard'));
 const DonorDashboard = React.lazy(() => import('./pages/DonorDashboard'));
+const AnimationShowcase = React.lazy(() => import('./pages/AnimationShowcase'));
 
 function App() {
   return (
