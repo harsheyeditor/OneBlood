@@ -1,0 +1,354 @@
+.animation-showcase {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.showcase-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 40px 20px;
+}
+
+.showcase-header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.showcase-header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tab-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.tab-btn.active {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: white;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+}
+
+.tab-icon {
+  font-size: 1.2rem;
+}
+
+.tab-label {
+  font-size: 0.95rem;
+}
+
+.animation-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.control-btn {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 25px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.control-btn.active {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: #4caf50;
+}
+
+.animation-content {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.animation-section h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.animation-section p {
+  text-align: center;
+  opacity: 0.9;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 3D Animation Demo */
+.animation-demo {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.canvas-wrapper {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 300px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animation-info {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.animation-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #ffd700;
+}
+
+.animation-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.animation-info li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.animation-info li:last-child {
+  border-bottom: none;
+}
+
+/* Lottie Showcase */
+.lottie-showcase {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.lottie-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  min-width: 250px;
+}
+
+.lottie-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #ffd700;
+}
+
+.animation-wrapper {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.lottie-item p {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+/* Heatmap Demo */
+.heatmap-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.heatmap-features {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 600px;
+}
+
+.heatmap-features h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #ffd700;
+}
+
+.heatmap-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.heatmap-features li {
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Footer */
+.showcase-footer {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 40px 20px;
+}
+
+.showcase-footer h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #ffd700;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-tag {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.performance-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.performance-info li {
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .showcase-header h1 {
+    font-size: 2rem;
+  }
+
+  .tab-navigation {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .animation-demo,
+  .lottie-showcase {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .canvas-wrapper {
+    min-width: 250px;
+    height: 300px;
+  }
+
+  .showcase-footer {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .animation-content {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .animation-showcase {
+    padding: 15px;
+  }
+
+  .showcase-header {
+    padding: 20px 15px;
+  }
+
+  .showcase-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .showcase-header p {
+    font-size: 1rem;
+  }
+
+  .tab-btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  .animation-content {
+    padding: 20px;
+  }
+
+  .canvas-wrapper {
+    min-width: 200px;
+    height: 250px;
+  }
+
+  .lottie-item {
+    min-width: 200px;
+    padding: 20px;
+  }
+}
