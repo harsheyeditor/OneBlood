@@ -524,14 +524,11 @@ export const AnimatedButton: React.FC<{
       className={`button-3d ${theme.isDark ? 'dark' : 'light'} ${getVariantClasses(variant)} ${getSizeClasses(size)} ${className}`}
       onClick={onClick}
       disabled={disabled || loading}
-      whileHover={isHover}
-      whileHover={{ scale: 1.05, transition: { duration: 0.2 }}
-      whileTap={{ scale: 0.95, transition: { duration: 0.1 }}
-      initial={buttonVariants[variant as keyof typeof buttonVariants]}
-      animate={buttonVariants[variant as typeof buttonVariants].animate}
-      whileHover={{ scale: 1.05, transition: { duration: 0.2 }}
-      whileTap={{ scale: 0.95, transition: { duration: 0.1 }}
-      initial={buttonVariants[variant as typeof buttonVariants].initial}
+      variants={buttonVariants[variant as keyof typeof buttonVariants]}
+      initial="initial"
+      animate="animate"
+      whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+      whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
       exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.4 }}
       style={{
@@ -539,9 +536,9 @@ export const AnimatedButton: React.FC<{
         borderRadius: '12px',
         transform: 'translateZ(0)',
         transformStyle: 'preserve-3d',
-        fontFamily: 'Segoe UI', sans-serif',
+        fontFamily: 'Segoe UI, sans-serif',
         fontSize: '16px',
-        fontWeight: 600',
+        fontWeight: '600',
         padding: '14px 24px',
         border: 'none',
         cursor: disabled ? 'not-allowed' : 'pointer',
@@ -549,22 +546,13 @@ export const AnimatedButton: React.FC<{
         backgroundColor: theme.colors.background,
         color: theme.colors.text,
         border: `1px solid ${theme.colors.border}`,
-        borderRadius: '12px',
-        boxShadow: `0 4px 12px ${theme.colors.shadow_color} !important`,
-        fontFamily: 'Segoe UI', sans-serif',
-        fontSize: '16px',
-        fontWeight: '600',
-        padding: '14px 24px',
-        borderRadius: '12px',
-        box-sizing: 'border-box',
-        background: 'rgba(255, 255, 255, 0.1) url('data:image/png'), url('data:image/svg'), url('data:image/svg')), url('data:font'), url('data:font')}",
+        boxShadow: `0 4px 12px ${theme.colors.shadow}`,
         backdropFilter: 'blur(20px)',
-        background-size: 'cover',
-        background-position: 'center center', // This can be an object or array of paths or glob patterns
-        background-repeat: 'no-repeat'
+        boxSizing: 'border-box'
       }}
-    }}
-    />
+    >
+      {children}
+    </motion.button>
   );
 };
 
