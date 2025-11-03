@@ -455,7 +455,15 @@ const EmergencyBloodRequest: React.FC = () => {
               animate="animate"
               exit="exit"
             >
-              <SuccessAnimation />
+              <div className="success-animations">
+                <SuccessAnimation />
+                <div className="heart-animation-wrapper">
+                  <HeartPulseAnimation size={80} isAnimating={true} />
+                </div>
+                <div className="blood-bag-animation-wrapper">
+                  <BloodBagFillingAnimation size={60} fillLevel={75} isAnimating={true} />
+                </div>
+              </div>
 
               <div className="success-content">
                 <h2>{t('request_sent')}</h2>
