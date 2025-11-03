@@ -384,25 +384,21 @@ const EmergencyBloodRequest: React.FC = () => {
                 )}
 
                 <div className="form-actions">
-                  <motion.button
-                    className="back-button"
+                  <AnimatedButton
+                    variant="secondary"
                     onClick={() => setStep('location')}
-                    variants={buttonVariants}
-                    whileHover="hover"
-                    whileTap="tap"
+                    size="large"
                   >
                     {t('back')}
-                  </motion.button>
+                  </AnimatedButton>
 
-                  <motion.button
-                    className="submit-button"
+                  <AnimatedButton
+                    variant="danger"
                     onClick={handleSubmit}
-                    variants={buttonVariants}
-                    whileHover="hover"
-                    whileTap="tap"
+                    size="large"
                   >
                     {t('send_request')}
-                  </motion.button>
+                  </AnimatedButton>
                 </div>
               </div>
             </motion.div>
