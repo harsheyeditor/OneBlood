@@ -18,23 +18,34 @@ const AnimationShowcase = React.lazy(() => import('./pages/AnimationShowcase'));
 
 function App() {
   return (
-    <ErrorBoundary>
-      <Router>
-        <div className="App">
-          <Suspense fallback={<LoadingSpinner size="large" text="Loading..." />}>
-            <Routes>
-              <Route path="/" element={<EmergencyBloodRequest />} />
-              <Route path="/emergency" element={<EmergencyBloodRequest />} />
-              <Route path="/donor-register" element={<DonorRegistration />} />
-              <Route path="/hospital-dashboard" element={<HospitalDashboard />} />
-              <Route path="/donor-dashboard" element={<DonorDashboard />} />
-              <Route path="/animations" element={<AnimationShowcase />} />
-              <Route path="*" element={<EmergencyBloodRequest />} />
-            </Routes>
-          </Suspense>
-        </div>
-      </Router>
-    </ErrorBoundary>
+    <ThemeProvider>
+      <ErrorBoundary>
+        <Router>
+          <div className="App">
+            {/* 3D Animated Background */}
+            <AnimatedBackground />
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
+
+            {/* Main Content */}
+            <PageTransition>
+              <Suspense fallback={<LoadingSpinner size="large" text="Loading..." />}>
+                <Routes>
+                  <Route path="/" element={<EmergencyBloodRequest />} />
+                  <Route path="/emergency" element={<EmergencyBloodRequest />} />
+                  <Route path="/donor-register" element={<DonorRegistration />} />
+                  <Route path="/hospital-dashboard" element={<HospitalDashboard />} />
+                  <Route path="/donor-dashboard" element={<DonorDashboard />} />
+                  <Route path="/animations" element={<AnimationShowcase />} />
+                  <Route path="*" element={<EmergencyBloodRequest />} />
+                </Routes>
+              </Suspense>
+            </PageTransition>
+          </div>
+        </Router>
+      </ErrorBoundary>
+    </ThemeProvider>
   );
 }
 
