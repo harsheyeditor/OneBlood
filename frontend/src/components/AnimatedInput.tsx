@@ -151,6 +151,13 @@ export const AnimatedInput: React.FC<AnimatedInputProps> = ({
   helpText = '',
   variant = 'default',
   size = 'medium',
+  value,
+  defaultValue,
+  onChange,
+  onFocus,
+  onBlur,
+  onEnter,
+  ref,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -159,7 +166,7 @@ export const AnimatedInput: React.FC<AnimatedInputProps> = ({
   const [isPressed, setIsPressed] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(value || defaultValue || '');
 
   const handleFocus = () => {
     setIsFocused(true);
